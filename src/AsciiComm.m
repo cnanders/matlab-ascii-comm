@@ -1,4 +1,5 @@
-classdef AsciiComm 
+classdef AsciiComm < handle
+    
     %UNTITLED Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -53,7 +54,7 @@ classdef AsciiComm
         
         function this = AsciiComm(varargin) 
             
-            this.cConnection = this.cCONNECTION_SERIAL;
+            this.cConnection = this.cCONNECTION_SERIAL; % default
             
             for k = 1 : 2: length(varargin)
                 this.msg(sprintf('passed in %s', varargin{k}));
@@ -62,8 +63,6 @@ classdef AsciiComm
                     this.(varargin{k}) = varargin{k + 1};
                 end
             end
-            
-            this.init();
             
         end
         
@@ -79,7 +78,7 @@ classdef AsciiComm
                         % this.comm.OutputBufferSize = this.u16OutputBufferSize;
                         fopen(this.comm); 
                     catch ME
-                        this.msg(getReport(ME));
+                        getReport(ME)
                         rethrow(ME)
                     end
                 case this.cCONNECTION_TCPCLIENT
