@@ -135,8 +135,8 @@ classdef AsciiComm < handle
         % tcpip, or tcpclient
         % Create the binary command packet as follows:
         % Convert the char command into a list of uint8 (decimal), 
-        % concat with the first terminator: 10 (base10) === 'line feed')
-        % concat with the second terminator: 13 (base10)=== 'carriage return') 
+        % concat with the terminator
+
         
         function writeAscii(this, cCmd)
             
