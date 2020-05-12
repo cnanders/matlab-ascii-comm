@@ -195,7 +195,7 @@ classdef AsciiComm < handle
                     % convert to ASCII and use strfind, since
                     % terminator can be multiple characters
                     
-                    if contans(char(u8Val), char(this.u8TerminatorRead))
+                    if contains(char(u8Val), char(this.u8TerminatorRead))
                         lTerminatorReached = true;
                     end
                 end
