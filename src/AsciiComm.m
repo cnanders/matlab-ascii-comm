@@ -122,6 +122,10 @@ classdef AsciiComm < handle
             
             switch this.cConnection
                 case this.cCONNECTION_SERIAL
+                    
+                    if ~isa(this.comm, 'serial')
+                        return;
+                    end
                     try
                         fclose(this.comm);
                     catch ME
