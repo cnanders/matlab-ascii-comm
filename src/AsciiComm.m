@@ -18,10 +18,6 @@ classdef AsciiComm < handle
         % {char 1xm}
         cConnection % cCONNECTION_SERIAL | cCONNECTION_TCPCLIENT
         
-        % {tcpip 1x1} tcpip connection 
-        % MATLAB talks to nPort 5150A Serial Device Server over tcpip.
-        % The nPort then talks to the MMC-103 using RS-485 BUS
-        comm
         
         % {char 1xm} port of MATLAB {serial}
         cPort = 'COM1'
@@ -48,6 +44,15 @@ classdef AsciiComm < handle
         
         u8TerminatorWrite = uint8([13 10])
         u8TerminatorRead = uint8([13 10])
+    end
+    
+    properties (Access = protected)
+        
+        % {tcpip 1x1} tcpip connection 
+        % MATLAB talks to nPort 5150A Serial Device Server over tcpip.
+        % The nPort then talks to the MMC-103 using RS-485 BUS
+        comm
+        
     end
     
     methods
@@ -175,6 +180,9 @@ classdef AsciiComm < handle
     
     methods (Access = private)
         
+        % Returns a list of uint8, one for each byte of the answer
+        % Returns {logical 1x1} true if bytes are read before timeout,
+        % false otherwise
         function [u8Result, lSuccess] = readToTerminator(this)
             
             lTerminatorReached = false;
