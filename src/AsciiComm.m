@@ -178,7 +178,7 @@ classdef AsciiComm < handle
     end
     
     
-    methods (Access = private)
+    methods (Access = protected)
         
         % Returns a list of uint8, one for each byte of the answer
         % Returns {logical 1x1} true if bytes are read before timeout,
