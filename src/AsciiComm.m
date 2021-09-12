@@ -38,6 +38,8 @@ classdef AsciiComm < handle
         
         % {uint16 1x1} tcpip port NPort requires a port of 4001 when in
         % "TCP server" mode
+        % For MOXA NPort, go to Operationg Settings -> Port 1 -> TCP Server
+        % mode
         u16TcpipPort = uint16(4001)
         
         lDebug = false
